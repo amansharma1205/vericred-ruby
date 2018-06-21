@@ -234,6 +234,9 @@ module VericredClient
     # The dental plan audience
     attr_accessor :audience
 
+    # Link to the summary of benefits and coverage (SBC) document.
+    attr_accessor :benefits_summary_url
+
     # Link to a copy of the insurance carrier's logo
     attr_accessor :logo_url
 
@@ -252,6 +255,12 @@ module VericredClient
     # Dental Plan Benefits
     attr_accessor :benefits
 
+    # Cumulative premium amount
+    attr_accessor :premium
+
+    # Source of the base pricing data
+    attr_accessor :premium_source
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -260,12 +269,15 @@ module VericredClient
         :'name' => :'name',
         :'issuer_name' => :'issuer_name',
         :'audience' => :'audience',
+        :'benefits_summary_url' => :'benefits_summary_url',
         :'logo_url' => :'logo_url',
         :'plan_type' => :'plan_type',
         :'stand_alone' => :'stand_alone',
         :'source' => :'source',
         :'identifiers' => :'identifiers',
-        :'benefits' => :'benefits'
+        :'benefits' => :'benefits',
+        :'premium' => :'premium',
+        :'premium_source' => :'premium_source'
       }
     end
 
@@ -276,12 +288,15 @@ module VericredClient
         :'name' => :'String',
         :'issuer_name' => :'String',
         :'audience' => :'String',
+        :'benefits_summary_url' => :'String',
         :'logo_url' => :'String',
         :'plan_type' => :'String',
         :'stand_alone' => :'BOOLEAN',
         :'source' => :'String',
         :'identifiers' => :'Array<PlanIdentifier>',
-        :'benefits' => :'DentalPlanBenefits'
+        :'benefits' => :'DentalPlanBenefits',
+        :'premium' => :'Float',
+        :'premium_source' => :'String'
       }
     end
 
@@ -307,6 +322,10 @@ module VericredClient
 
       if attributes.has_key?(:'audience')
         self.audience = attributes[:'audience']
+      end
+
+      if attributes.has_key?(:'benefits_summary_url')
+        self.benefits_summary_url = attributes[:'benefits_summary_url']
       end
 
       if attributes.has_key?(:'logo_url')
@@ -335,6 +354,14 @@ module VericredClient
         self.benefits = attributes[:'benefits']
       end
 
+      if attributes.has_key?(:'premium')
+        self.premium = attributes[:'premium']
+      end
+
+      if attributes.has_key?(:'premium_source')
+        self.premium_source = attributes[:'premium_source']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -359,12 +386,15 @@ module VericredClient
           name == o.name &&
           issuer_name == o.issuer_name &&
           audience == o.audience &&
+          benefits_summary_url == o.benefits_summary_url &&
           logo_url == o.logo_url &&
           plan_type == o.plan_type &&
           stand_alone == o.stand_alone &&
           source == o.source &&
           identifiers == o.identifiers &&
-          benefits == o.benefits
+          benefits == o.benefits &&
+          premium == o.premium &&
+          premium_source == o.premium_source
     end
 
     # @see the `==` method
@@ -376,7 +406,7 @@ module VericredClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, issuer_name, audience, logo_url, plan_type, stand_alone, source, identifiers, benefits].hash
+      [id, name, issuer_name, audience, benefits_summary_url, logo_url, plan_type, stand_alone, source, identifiers, benefits, premium, premium_source].hash
     end
 
     # Builds the object from hash

@@ -221,47 +221,35 @@ require 'date'
 
 module VericredClient
 
-  class VisionPlanUpdate
-    # The vision plan name
+  class EmbargoRequest
+    # The external name of the Embargo Date
     attr_accessor :name
 
-    # The issuer vericred id
-    attr_accessor :issuer_vericred_id
+    # The product line for the Embargo Date
+    attr_accessor :product_line
 
-    # The vision plan audience
+    # The audience for the Embargo Date
     attr_accessor :audience
 
-    # Link to the summary of benefits and coverage (SBC) document.
-    attr_accessor :benefits_summary_url
+    # The date for which the embargo ends
+    attr_accessor :release_date
 
-    # The vision plan type
-    attr_accessor :plan_type
+    # The effective date for which the embargo applies
+    attr_accessor :start_date
 
-    # Stand alone flag for vision plan
-    attr_accessor :stand_alone
-
-    # The vision plan source
-    attr_accessor :source
-
-    # Vision Plan External Identifiers
-    attr_accessor :external_ids
-
-    # Vision Plan Benefits
-    attr_accessor :benefits
+    # The expiration date for which the embargo applies
+    attr_accessor :end_date
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'issuer_vericred_id' => :'issuer_vericred_id',
+        :'product_line' => :'product_line',
         :'audience' => :'audience',
-        :'benefits_summary_url' => :'benefits_summary_url',
-        :'plan_type' => :'plan_type',
-        :'stand_alone' => :'stand_alone',
-        :'source' => :'source',
-        :'external_ids' => :'external_ids',
-        :'benefits' => :'benefits'
+        :'release_date' => :'release_date',
+        :'start_date' => :'start_date',
+        :'end_date' => :'end_date'
       }
     end
 
@@ -269,14 +257,11 @@ module VericredClient
     def self.swagger_types
       {
         :'name' => :'String',
-        :'issuer_vericred_id' => :'String',
+        :'product_line' => :'String',
         :'audience' => :'String',
-        :'benefits_summary_url' => :'String',
-        :'plan_type' => :'String',
-        :'stand_alone' => :'BOOLEAN',
-        :'source' => :'String',
-        :'external_ids' => :'Array<PlanIdentifier>',
-        :'benefits' => :'VisionPlanBenefits'
+        :'release_date' => :'String',
+        :'start_date' => :'String',
+        :'end_date' => :'String'
       }
     end
 
@@ -292,38 +277,24 @@ module VericredClient
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'issuer_vericred_id')
-        self.issuer_vericred_id = attributes[:'issuer_vericred_id']
+      if attributes.has_key?(:'product_line')
+        self.product_line = attributes[:'product_line']
       end
 
       if attributes.has_key?(:'audience')
         self.audience = attributes[:'audience']
       end
 
-      if attributes.has_key?(:'benefits_summary_url')
-        self.benefits_summary_url = attributes[:'benefits_summary_url']
+      if attributes.has_key?(:'release_date')
+        self.release_date = attributes[:'release_date']
       end
 
-      if attributes.has_key?(:'plan_type')
-        self.plan_type = attributes[:'plan_type']
+      if attributes.has_key?(:'start_date')
+        self.start_date = attributes[:'start_date']
       end
 
-      if attributes.has_key?(:'stand_alone')
-        self.stand_alone = attributes[:'stand_alone']
-      end
-
-      if attributes.has_key?(:'source')
-        self.source = attributes[:'source']
-      end
-
-      if attributes.has_key?(:'external_ids')
-        if (value = attributes[:'external_ids']).is_a?(Array)
-          self.external_ids = value
-        end
-      end
-
-      if attributes.has_key?(:'benefits')
-        self.benefits = attributes[:'benefits']
+      if attributes.has_key?(:'end_date')
+        self.end_date = attributes[:'end_date']
       end
 
     end
@@ -347,14 +318,11 @@ module VericredClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          issuer_vericred_id == o.issuer_vericred_id &&
+          product_line == o.product_line &&
           audience == o.audience &&
-          benefits_summary_url == o.benefits_summary_url &&
-          plan_type == o.plan_type &&
-          stand_alone == o.stand_alone &&
-          source == o.source &&
-          external_ids == o.external_ids &&
-          benefits == o.benefits
+          release_date == o.release_date &&
+          start_date == o.start_date &&
+          end_date == o.end_date
     end
 
     # @see the `==` method
@@ -366,7 +334,7 @@ module VericredClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, issuer_vericred_id, audience, benefits_summary_url, plan_type, stand_alone, source, external_ids, benefits].hash
+      [name, product_line, audience, release_date, start_date, end_date].hash
     end
 
     # Builds the object from hash

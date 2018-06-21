@@ -257,6 +257,12 @@ describe 'VisionPlanUpdate' do
     end
   end
 
+  describe 'test attribute "benefits_summary_url"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "plan_type"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

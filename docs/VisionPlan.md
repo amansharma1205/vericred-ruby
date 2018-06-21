@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **String** | The vision plan name | [optional] 
 **issuer_name** | **String** | Name of the insurance carrier | [optional] 
 **audience** | **String** | The vision plan audience | [optional] 
+**benefits_summary_url** | **String** | Link to the summary of benefits and coverage (SBC) document. | [optional] 
 **logo_url** | **String** | Link to a copy of the insurance carrier&#39;s logo | [optional] 
 **plan_type** | **String** | Category of the plan (e.g. EPO, HMO, PPO, POS, Indemnity, PACE,HMO w/POS, Cost, FFS, MSA) | [optional] 
 **stand_alone** | **BOOLEAN** | Stand alone flag for vision plan | [optional] 

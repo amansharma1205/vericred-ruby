@@ -228,12 +228,16 @@ module VericredClient
     # Is this applicant potentially eligible for Chip or Medicaid?
     attr_accessor :eligible_for_chip_medicaid
 
+    # The premium tax credit amount calculated for the applicants in the request.
+    attr_accessor :premium_tax_credit
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'total' => :'total',
-        :'eligible_for_chip_medicaid' => :'eligible_for_chip_medicaid'
+        :'eligible_for_chip_medicaid' => :'eligible_for_chip_medicaid',
+        :'premium_tax_credit' => :'premium_tax_credit'
       }
     end
 
@@ -241,7 +245,8 @@ module VericredClient
     def self.swagger_types
       {
         :'total' => :'Integer',
-        :'eligible_for_chip_medicaid' => :'BOOLEAN'
+        :'eligible_for_chip_medicaid' => :'BOOLEAN',
+        :'premium_tax_credit' => :'Float'
       }
     end
 
@@ -259,6 +264,10 @@ module VericredClient
 
       if attributes.has_key?(:'eligible_for_chip_medicaid')
         self.eligible_for_chip_medicaid = attributes[:'eligible_for_chip_medicaid']
+      end
+
+      if attributes.has_key?(:'premium_tax_credit')
+        self.premium_tax_credit = attributes[:'premium_tax_credit']
       end
 
     end
@@ -282,7 +291,8 @@ module VericredClient
       return true if self.equal?(o)
       self.class == o.class &&
           total == o.total &&
-          eligible_for_chip_medicaid == o.eligible_for_chip_medicaid
+          eligible_for_chip_medicaid == o.eligible_for_chip_medicaid &&
+          premium_tax_credit == o.premium_tax_credit
     end
 
     # @see the `==` method
@@ -294,7 +304,7 @@ module VericredClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [total, eligible_for_chip_medicaid].hash
+      [total, eligible_for_chip_medicaid, premium_tax_credit].hash
     end
 
     # Builds the object from hash

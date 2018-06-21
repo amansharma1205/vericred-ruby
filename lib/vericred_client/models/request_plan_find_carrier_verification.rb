@@ -221,62 +221,97 @@ require 'date'
 
 module VericredClient
 
-  class VisionPlanUpdate
-    # The vision plan name
-    attr_accessor :name
+  class RequestPlanFindCarrierVerification
+    # Applicants for desired plans.
+    attr_accessor :applicants
 
-    # The issuer vericred id
-    attr_accessor :issuer_vericred_id
+    # National-level carrier id
+    attr_accessor :carrier_id
 
-    # The vision plan audience
-    attr_accessor :audience
+    # Date of enrollment
+    attr_accessor :enrollment_date
 
-    # Link to the summary of benefits and coverage (SBC) document.
-    attr_accessor :benefits_summary_url
+    # National Drug Code Package Id
+    attr_accessor :drug_packages
 
-    # The vision plan type
-    attr_accessor :plan_type
+    # County code to determine eligibility
+    attr_accessor :fips_code
 
-    # Stand alone flag for vision plan
-    attr_accessor :stand_alone
+    # Label for search tracking
+    attr_accessor :group_name
 
-    # The vision plan source
-    attr_accessor :source
+    # Total household income.
+    attr_accessor :household_income
 
-    # Vision Plan External Identifiers
-    attr_accessor :external_ids
+    # Number of people living in household.
+    attr_accessor :household_size
 
-    # Vision Plan Benefits
-    attr_accessor :benefits
+    # List of plan IDs to filter by
+    attr_accessor :ids
+
+    # Type of plan to search for.
+    attr_accessor :market
+
+    # List of providers to search for.
+    attr_accessor :providers
+
+    # Selected page of paginated response.
+    attr_accessor :page
+
+    # Results per page of response.
+    attr_accessor :per_page
+
+    # Sort responses by plan field.
+    attr_accessor :sort
+
+    # 5-digit zip code - this helps determine pricing.
+    attr_accessor :zip_code
+
+    # Vericred IDs of the issuers to include in search
+    attr_accessor :issuer_vericred_ids
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'issuer_vericred_id' => :'issuer_vericred_id',
-        :'audience' => :'audience',
-        :'benefits_summary_url' => :'benefits_summary_url',
-        :'plan_type' => :'plan_type',
-        :'stand_alone' => :'stand_alone',
-        :'source' => :'source',
-        :'external_ids' => :'external_ids',
-        :'benefits' => :'benefits'
+        :'applicants' => :'applicants',
+        :'carrier_id' => :'carrier_id',
+        :'enrollment_date' => :'enrollment_date',
+        :'drug_packages' => :'drug_packages',
+        :'fips_code' => :'fips_code',
+        :'group_name' => :'group_name',
+        :'household_income' => :'household_income',
+        :'household_size' => :'household_size',
+        :'ids' => :'ids',
+        :'market' => :'market',
+        :'providers' => :'providers',
+        :'page' => :'page',
+        :'per_page' => :'per_page',
+        :'sort' => :'sort',
+        :'zip_code' => :'zip_code',
+        :'issuer_vericred_ids' => :'issuer_vericred_ids'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'issuer_vericred_id' => :'String',
-        :'audience' => :'String',
-        :'benefits_summary_url' => :'String',
-        :'plan_type' => :'String',
-        :'stand_alone' => :'BOOLEAN',
-        :'source' => :'String',
-        :'external_ids' => :'Array<PlanIdentifier>',
-        :'benefits' => :'VisionPlanBenefits'
+        :'applicants' => :'Array<RequestPlanFindApplicant>',
+        :'carrier_id' => :'Integer',
+        :'enrollment_date' => :'String',
+        :'drug_packages' => :'Array<RequestPlanFindDrugPackage>',
+        :'fips_code' => :'String',
+        :'group_name' => :'String',
+        :'household_income' => :'Integer',
+        :'household_size' => :'Integer',
+        :'ids' => :'Array<Integer>',
+        :'market' => :'String',
+        :'providers' => :'Array<RequestPlanFindProvider>',
+        :'page' => :'Integer',
+        :'per_page' => :'Integer',
+        :'sort' => :'String',
+        :'zip_code' => :'String',
+        :'issuer_vericred_ids' => :'Array<String>'
       }
     end
 
@@ -288,42 +323,78 @@ module VericredClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'issuer_vericred_id')
-        self.issuer_vericred_id = attributes[:'issuer_vericred_id']
-      end
-
-      if attributes.has_key?(:'audience')
-        self.audience = attributes[:'audience']
-      end
-
-      if attributes.has_key?(:'benefits_summary_url')
-        self.benefits_summary_url = attributes[:'benefits_summary_url']
-      end
-
-      if attributes.has_key?(:'plan_type')
-        self.plan_type = attributes[:'plan_type']
-      end
-
-      if attributes.has_key?(:'stand_alone')
-        self.stand_alone = attributes[:'stand_alone']
-      end
-
-      if attributes.has_key?(:'source')
-        self.source = attributes[:'source']
-      end
-
-      if attributes.has_key?(:'external_ids')
-        if (value = attributes[:'external_ids']).is_a?(Array)
-          self.external_ids = value
+      if attributes.has_key?(:'applicants')
+        if (value = attributes[:'applicants']).is_a?(Array)
+          self.applicants = value
         end
       end
 
-      if attributes.has_key?(:'benefits')
-        self.benefits = attributes[:'benefits']
+      if attributes.has_key?(:'carrier_id')
+        self.carrier_id = attributes[:'carrier_id']
+      end
+
+      if attributes.has_key?(:'enrollment_date')
+        self.enrollment_date = attributes[:'enrollment_date']
+      end
+
+      if attributes.has_key?(:'drug_packages')
+        if (value = attributes[:'drug_packages']).is_a?(Array)
+          self.drug_packages = value
+        end
+      end
+
+      if attributes.has_key?(:'fips_code')
+        self.fips_code = attributes[:'fips_code']
+      end
+
+      if attributes.has_key?(:'group_name')
+        self.group_name = attributes[:'group_name']
+      end
+
+      if attributes.has_key?(:'household_income')
+        self.household_income = attributes[:'household_income']
+      end
+
+      if attributes.has_key?(:'household_size')
+        self.household_size = attributes[:'household_size']
+      end
+
+      if attributes.has_key?(:'ids')
+        if (value = attributes[:'ids']).is_a?(Array)
+          self.ids = value
+        end
+      end
+
+      if attributes.has_key?(:'market')
+        self.market = attributes[:'market']
+      end
+
+      if attributes.has_key?(:'providers')
+        if (value = attributes[:'providers']).is_a?(Array)
+          self.providers = value
+        end
+      end
+
+      if attributes.has_key?(:'page')
+        self.page = attributes[:'page']
+      end
+
+      if attributes.has_key?(:'per_page')
+        self.per_page = attributes[:'per_page']
+      end
+
+      if attributes.has_key?(:'sort')
+        self.sort = attributes[:'sort']
+      end
+
+      if attributes.has_key?(:'zip_code')
+        self.zip_code = attributes[:'zip_code']
+      end
+
+      if attributes.has_key?(:'issuer_vericred_ids')
+        if (value = attributes[:'issuer_vericred_ids']).is_a?(Array)
+          self.issuer_vericred_ids = value
+        end
       end
 
     end
@@ -346,15 +417,22 @@ module VericredClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          issuer_vericred_id == o.issuer_vericred_id &&
-          audience == o.audience &&
-          benefits_summary_url == o.benefits_summary_url &&
-          plan_type == o.plan_type &&
-          stand_alone == o.stand_alone &&
-          source == o.source &&
-          external_ids == o.external_ids &&
-          benefits == o.benefits
+          applicants == o.applicants &&
+          carrier_id == o.carrier_id &&
+          enrollment_date == o.enrollment_date &&
+          drug_packages == o.drug_packages &&
+          fips_code == o.fips_code &&
+          group_name == o.group_name &&
+          household_income == o.household_income &&
+          household_size == o.household_size &&
+          ids == o.ids &&
+          market == o.market &&
+          providers == o.providers &&
+          page == o.page &&
+          per_page == o.per_page &&
+          sort == o.sort &&
+          zip_code == o.zip_code &&
+          issuer_vericred_ids == o.issuer_vericred_ids
     end
 
     # @see the `==` method
@@ -366,7 +444,7 @@ module VericredClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, issuer_vericred_id, audience, benefits_summary_url, plan_type, stand_alone, source, external_ids, benefits].hash
+      [applicants, carrier_id, enrollment_date, drug_packages, fips_code, group_name, household_income, household_size, ids, market, providers, page, per_page, sort, zip_code, issuer_vericred_ids].hash
     end
 
     # Builds the object from hash

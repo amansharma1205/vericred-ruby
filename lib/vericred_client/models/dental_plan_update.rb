@@ -231,6 +231,9 @@ module VericredClient
     # The dental plan audience
     attr_accessor :audience
 
+    # Link to the summary of benefits and coverage (SBC) document.
+    attr_accessor :benefits_summary_url
+
     # The dental plan type
     attr_accessor :plan_type
 
@@ -253,6 +256,7 @@ module VericredClient
         :'name' => :'name',
         :'issuer_vericred_id' => :'issuer_vericred_id',
         :'audience' => :'audience',
+        :'benefits_summary_url' => :'benefits_summary_url',
         :'plan_type' => :'plan_type',
         :'stand_alone' => :'stand_alone',
         :'source' => :'source',
@@ -267,6 +271,7 @@ module VericredClient
         :'name' => :'String',
         :'issuer_vericred_id' => :'String',
         :'audience' => :'String',
+        :'benefits_summary_url' => :'String',
         :'plan_type' => :'String',
         :'stand_alone' => :'BOOLEAN',
         :'source' => :'String',
@@ -293,6 +298,10 @@ module VericredClient
 
       if attributes.has_key?(:'audience')
         self.audience = attributes[:'audience']
+      end
+
+      if attributes.has_key?(:'benefits_summary_url')
+        self.benefits_summary_url = attributes[:'benefits_summary_url']
       end
 
       if attributes.has_key?(:'plan_type')
@@ -340,6 +349,7 @@ module VericredClient
           name == o.name &&
           issuer_vericred_id == o.issuer_vericred_id &&
           audience == o.audience &&
+          benefits_summary_url == o.benefits_summary_url &&
           plan_type == o.plan_type &&
           stand_alone == o.stand_alone &&
           source == o.source &&
@@ -356,7 +366,7 @@ module VericredClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, issuer_vericred_id, audience, plan_type, stand_alone, source, external_ids, benefits].hash
+      [name, issuer_vericred_id, audience, benefits_summary_url, plan_type, stand_alone, source, external_ids, benefits].hash
     end
 
     # Builds the object from hash
